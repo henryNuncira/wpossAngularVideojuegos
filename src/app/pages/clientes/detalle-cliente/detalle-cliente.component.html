@@ -1,0 +1,39 @@
+<div class="card mt-2" style="width: 100vh">
+  <div class="card-header">
+    detalles del Cliente
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p class="text-uppercase">No.# : {{cliente.idCliente}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Nit : {{cliente.nit}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Nombre Completo: {{cliente.nombre}}{{cliente.apellido}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase">Edad : {{cliente.edad}}</p>
+     </li>
+      <li class="list-group-item">
+        <p class="text-uppercase">Telefono : {{cliente.telefono}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Dirección : {{cliente.direccion}} </p>
+      </li>
+      <li class="list-group-item">
+         <p class="text-uppercase">Correo Electronico : {{cliente.correo}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="btn-group" role="group">
+    <button class="btn btn-outline-warning btn-sm m-1" (click)= "toEditarCliente()">Editar</button>
+    <button class="btn btn-outline-danger btn-sm m-1 " (click)= "toDeleteCliente()">Borrar</button>
+  </div>
+</div>
+<br>
+<button class="btn btn-primary btn-sm m-1" (click)= "toList()">Volver a la lista</button>
+
+
+

@@ -1,0 +1,48 @@
+<div class="container mt-3 table-responsive">
+
+
+  <button type="button" class="btn btn-warning m-1" (click)="toNuevo()">Nuevo</button>
+  <button type="button" class="btn btn-primary btn-lg"[routerLink]="['/contAdmin']">Regresar al Menu</button>
+<table datatable class="row-border hover table-striped table-bordered">
+<thead class="thead-active">
+  <tr>
+    <th scope="col">No.#</th>
+    <th scope="col">NombreCompleto</th>
+    <th scope="col">Titulo</th>
+    <th scope="col">Año</th>
+    <th scope="col">Protagonista</th>
+    <th scope="col">Director</th>
+    <th scope="col">Productor</th>
+    <th scope="col">Tecnologia</th>
+    <th scope="col">Precio</th>
+    <th scope="col">Imagen</th>
+    <th scope="col" class="d-none d-sm-block">Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let videogame of listadoVideos">
+    <th scope="row">{{videogame.idVideoJuego}}</th>
+    <td>{{videogame.nombre}}</td>
+    <td>{{videogame.titulo}}</td>
+    <td>{{videogame.ano}}</td>
+    <td>{{videogame.protagonista}}</td>
+    <td>{{videogame.director}}</td>
+    <td>{{videogame.productor}}</td>
+    <td>{{videogame.tecnologia}}</td>
+    <td>{{videogame.precio}}</td>
+    <td>{{videogame.imagen}}</td>
+
+
+    <td class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-success m-1" (click)="toEditar(videogame)">Editar</button>
+      <button type="button" class="btn btn-outline-info m-1" (click)="toVer(videogame)">Mostrar</button>
+      <button type="button" class="btn btn-outline-danger m-1" (click)="toDelete(videogame.idVideoJuego)">Eliminar</button>
+    </td>
+  </tr>
+
+</tbody>
+</table>
+</div>
+
+
+
