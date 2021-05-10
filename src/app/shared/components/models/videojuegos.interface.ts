@@ -9,6 +9,7 @@ export interface VideojuegosI {
     productor :string ;
     tecnologia :string ;
     precio :string ;
+    stock : number;
     imagen :string ;
 
 }

@@ -8,7 +8,7 @@ export interface ventaI
   fechaEntrega :string ;
   total :number ;
   estado :string ;
-
+  impuesto : string ;
 
 
 }

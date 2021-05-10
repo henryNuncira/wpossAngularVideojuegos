@@ -1,1 +1,53 @@
-<p>detalles works!</p>
+<div class="card mt-2" style="width: 100vh">
+  <div class="card-header">
+    detalles del Video Juego
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p class="text-uppercase">No.# : {{videoJuegos.idVideoJuego}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Nombre Completo : {{videoJuegos.nombre}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Precio : {{videoJuegos.precio}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase">Stock : {{videoJuegos.stock}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Titulo : {{videoJuegos.titulo}} </p>
+      </li>
+      <li class="list-group-item">
+         <p class="text-uppercase">Año de Publicado: {{videoJuegos.ano}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase">Protagonista: {{videoJuegos.protagonista}}</p>
+     </li>
+     <li class="list-group-item">
+      <p class="text-uppercase">Director: {{videoJuegos.director}}</p>
+    </li>
+    <li class="list-group-item">
+      <p class="text-uppercase">Productor: {{videoJuegos.productor}}</p>
+    </li>
+    <li class="list-group-item">
+    <p class="text-uppercase">Tecnologia: {{videoJuegos.tecnologia}}</p>
+    </li>
+    <li class="list-group-item">
+      <p class="text-uppercase">Imagen: {{videoJuegos.imagen}}</p>
+      </li>
+
+    </ul>
+  </div>
+  <div class="btn-group" role="group">
+    <button class="btn btn-outline-warning btn-sm m-1" (click)= "toEditarVideoJuego()">Editar</button>
+    <button class="btn btn-outline-danger btn-sm m-1 " (click)= "toDeleteVideoJuego()">Borrar</button>
+  </div>
+</div>
+<br>
+<button class="btn btn-primary btn-sm m-1" (click)= "toList()">Volver a la lista</button>
+
+
+
+

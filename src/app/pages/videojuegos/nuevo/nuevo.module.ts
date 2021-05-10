@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NuevoRoutingModule } from './nuevo-routing.module';
 import { NuevoComponent } from './nuevo.component';
+import { VideoJuegoFormModule } from 'src/app/shared/components/video-juego-form/video-juego-form.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NuevoComponent } from './nuevo.component';
   ],
   imports: [
     CommonModule,
-    NuevoRoutingModule
+    NuevoRoutingModule,
+    VideoJuegoFormModule
   ]
 })
 export class NuevoModule { }

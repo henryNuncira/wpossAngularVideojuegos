@@ -1,0 +1,42 @@
+<div class="container mt-3 table-responsive">
+
+
+  <button type="button" class="btn btn-warning m-1" (click)="toNuevo()">Nuevo</button>
+  <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/dashboard']">Regresar al Menu</button>
+<table datatable class="row-border hover table-striped table-bordered">
+<thead class="thead-active">
+  <tr>
+    <th scope="col">No.#</th>
+    <th scope="col">Tipo Comprobante</th>
+    <th scope="col">Numero Comprobante</th>
+    <th scope="col">Fecha Inicio</th>
+    <th scope="col">Fecha Entrega</th>
+    <th scope="col">Impuesto</th>
+    <th scope="col">Total</th>
+    <th scope="col" class="d-none d-sm-block">Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let venta of listadoVentas">
+    <th scope="row">{{venta.idVenta}}</th>
+    <td>{{venta.tipoComprobante}}</td>
+    <td>{{venta.numeroComprobante}}</td>
+    <td>{{venta.fechaInicio}}</td>
+    <td>{{venta.fechaEntrega}}</td>
+    <td>{{venta.impuesto}}</td>
+    <td>{{venta.total}}</td>
+
+    <td class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-success m-1" (click)="toEditar(venta)">Editar</button>
+      <button type="button" class="btn btn-outline-info m-1" (click)="toVer(venta)">Mostrar</button>
+      <button type="button" class="btn btn-outline-danger m-1" (click)="toDelete(venta.idVenta)">Eliminar</button>
+    </td>
+  </tr>
+
+</tbody>
+</table>
+</div>
+
+
+
+

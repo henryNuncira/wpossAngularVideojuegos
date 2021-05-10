@@ -1,1 +1,56 @@
-<p>video-juego-form works!</p>
+<form class="mt-3 col-md-8 offset-md-2"  (ngSubmit)= "toGuardarVideo()" [formGroup] = "videosForm" >
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" id="readOnlyInput" placeholder="Solo lectura Id" readonly="" formControlName="idVideoJuego">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Nombre Completo" formControlName="nombre">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="number" class="form-control" placeholder="Precio $" formControlName="precio">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="number" class="form-control" placeholder="stock" formControlName="stock">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Titulo" formControlName="titulo">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Año de Publicado" formControlName="ano">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Protagonista" formControlName="protagonista">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Director" formControlName="director">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Productor" formControlName="productor">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Tecnologia" formControlName="tecnologia">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Imagen Caratula" formControlName="imagen">
+    </div>
+  </div>
+  <div *ngIf="this.bandera==1">
+  <button  type="submit" id="save"  class="btn btn-success btn-block text-light">Guardar</button>
+</div>
+<div  *ngIf="this.bandera==0">
+  <button type="submit" id="modify" class="btn btn-success btn-block text-light">Modificar</button>
+</div>
+</form>
+<button class="btn btn-primary btn-sm m-1" (click)= "toList()">Volver a la lista</button>
+

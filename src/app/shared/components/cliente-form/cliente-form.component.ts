@@ -46,6 +46,8 @@ export class ClienteFormComponent implements OnInit {
   if( this.bandera==1){
         this.api.PostNewCliente(this.clienteForm.value).subscribe(
           respuesta =>{
+
+
             this.estado= respuesta.state;
             if (this.estado == 200) {
               Swal.fire({
@@ -94,10 +96,10 @@ toChange(): void{
 
 
       },error => console.error(error));
-      this.router.navigate(['listadoCliente']);
+      this.router.navigate(['listadoClientes']);
     }
     toList() :void{
-      this.router.navigate(['listadoCliente']);
+      this.router.navigate(['listadoClientes']);
     }
 
 
