@@ -1,1 +1,35 @@
-<p>detalle-detalle-venta works!</p>
+<div class="card mt-2" style="width: 100vh">
+  <div class="card-header">
+    detalles de la Venta
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p class="text-uppercase">No.# : {{detalleVenta.idDetalle}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Fecha Venta : {{detalleVenta.fechaVenta}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Tipo de Venta{{detalleVenta.tipoVenta}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase">Cantidad : {{detalleVenta.cantidad}}</p>
+     </li>
+      <li class="list-group-item">
+        <p class="text-uppercase">Precio $: {{detalleVenta.precio}}</p>
+      </li>
+      <li class="list-group-item">
+        <p class="text-uppercase"> Descuento : {{detalleVenta.descuento}} </p>
+      </li>
+
+    </ul>
+  </div>
+  <div class="btn-group" role="group">
+    <button class="btn btn-outline-warning btn-sm m-1" (click)= "toEditardetalleVenta()">Editar</button>
+
+  </div>
+</div>
+<br>
+<button class="btn btn-primary btn-sm m-1" (click)= "toList()">Volver a la lista</button>
+

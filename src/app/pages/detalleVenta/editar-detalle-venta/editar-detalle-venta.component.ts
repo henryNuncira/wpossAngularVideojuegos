@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-editar-detalle-venta',
-  templateUrl: './editar-detalle-venta.component.html',
-  styleUrls: ['./editar-detalle-venta.component.scss']
+  template: `<app-detalle-venta-form></app-detalle-venta-form>`,
+
 })
-export class EditarDetalleVentaComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class EditarDetalleVentaComponent{}

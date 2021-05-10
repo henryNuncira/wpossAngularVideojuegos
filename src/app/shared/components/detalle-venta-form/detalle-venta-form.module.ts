@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DetalleVentaFormComponent } from './detalle-venta-form.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [DetalleVentaFormComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    ReactiveFormsModule
+  ],
+  exports : [DetalleVentaFormComponent]
 })
 export class DetalleVentaFormModule { }

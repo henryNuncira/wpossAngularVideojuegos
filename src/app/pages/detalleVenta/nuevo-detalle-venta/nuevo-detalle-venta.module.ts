@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NuevoDetalleVentaRoutingModule } from './nuevo-detalle-venta-routing.module';
 import { NuevoDetalleVentaComponent } from './nuevo-detalle-venta.component';
+import { DetalleVentaFormModule } from 'src/app/shared/components/detalle-venta-form/detalle-venta-form.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NuevoDetalleVentaComponent } from './nuevo-detalle-venta.component';
   ],
   imports: [
     CommonModule,
-    NuevoDetalleVentaRoutingModule
+    NuevoDetalleVentaRoutingModule,
+    DetalleVentaFormModule
   ]
 })
 export class NuevoDetalleVentaModule { }

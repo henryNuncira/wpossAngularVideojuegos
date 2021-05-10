@@ -25,41 +25,17 @@ export class DetallesVentaComponent implements OnInit {
 
   ngOnInit(): void {
     if(typeof this.venta == 'undefined'){
-      this.router.navigate(['listadoventas'])
+      this.router.navigate(['listadoVentas'])
     }
   }
   toEditarventa():void{
     this.navigationExtras.state.value = this.venta;
-    this.router.navigate(['editarventa'], this.navigationExtras);
+    this.router.navigate(['editarVenta'], this.navigationExtras);
   }
 
   toList():void{
-    this.router.navigate(['listadoventas']);
+    this.router.navigate(['listadoVentas']);
   }
- toDeleteventa() : void{
-    this.api.DeleteVenta(this.venta.idVenta).subscribe(resp=>{
-      // this.estado=resp.state;
-      // this.message=resp.message;
-      console.log(resp);
-      this.router.navigate(['listadoventas']);
-      Swal.fire({
-        title: '¿Estas seguro?',
-        text: "No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, Bórralo!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Borrado!',
-            'Tu archivo ha sido eliminado.',
-            'success'
-          )
-        }
-      })
-    },error => console.error(error));
-  }
+
 }
 

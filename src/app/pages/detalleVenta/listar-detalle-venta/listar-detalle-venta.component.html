@@ -1,1 +1,42 @@
-<p>listar-detalle-venta works!</p>
+<div class="container mt-3 table-responsive">
+
+
+  <button type="button" class="btn btn-warning m-1" (click)="toNuevo()">Nuevo</button>
+  <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/dashboard']">Regresar al Menu</button>
+<table datatable class="row-border hover table-striped table-bordered">
+<thead class="thead-active">
+  <tr>
+    <th scope="col">No.#</th>
+    <th scope="col">Fecha Venta</th>
+    <th scope="col">Tipo de Venta</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col">Precio</th>
+    <th scope="col">Descuento</th>
+
+    <th scope="col" class="d-none d-sm-block">Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let detalleVenta of listadodetalleDetalleVenta">
+    <th scope="row">{{detalleVenta.idDetalle}}</th>
+    <td>{{detalleVenta.fechaVenta}}</td>
+    <td>{{detalleVenta.tipoVenta}}</td>
+    <td>{{detalleVenta.cantidad}}</td>
+    <td>{{detalleVenta.precio}}</td>
+    <td>{{detalleVenta.descuento}}</td>
+
+    <td class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-success m-1" (click)="toEditar(detalleVenta)">Editar</button>
+      <button type="button" class="btn btn-outline-info m-1" (click)="toVer(detalleVenta)">Mostrar</button>
+
+    </td>
+  </tr>
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
