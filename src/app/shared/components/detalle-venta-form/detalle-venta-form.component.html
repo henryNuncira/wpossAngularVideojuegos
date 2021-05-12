@@ -1,33 +1,104 @@
 <form class="mt-3 col-md-8 offset-md-2"  (ngSubmit)= "toGuardarVideo()" [formGroup] = "detalleVentaForm" >
 
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" id="readOnlyInput" placeholder="Solo lectura Id" readonly="" formControlName="idDetalle">
+    <div *ngIf="this.bandera==0" class="form-group">
+      <fieldset>
+        <label class="form-label mt" for="readOnlyInput">Entrada de solo lectura</label>
+        <input class="form-control" id="readOnlyInput" type="text" placeholder="Readonly input here..."
+        readonly=""formControlName="idDetalle" >
+      </fieldset>
     </div>
 
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="number" class="form-control" placeholder="Tipo de Venta" formControlName="tipoVenta">
+
+    <div class="form-group has-danger">
+      <label class="form-label "  for="inputInvalid">Tipo de Venta</label>
+      <input type="text"  class="form-control"
+      placeholder="Tipo de Venta" id="validacion" formControlName="tipoVenta"
+       [ngClass] = "{
+        'is-invalid':isValidField('nombre')
+      }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="detalleVentaForm.get('nombre').errors?.required">
+          Lo siento, Tipo de Venta es vacío. ¿Prueba otro?
+        </span>
+        </div>
     </div>
-    <div class="form-group col-md-6">
-      <input type="number" class="form-control" placeholder="Cantidad" formControlName="cantidad">
+
+    <div class="form-group has-danger">
+      <label class="form-label "  for="inputInvalid">Cantidad</label>
+      <input type="text"  class="form-control"
+      placeholder="Cantidad" id="validacion" formControlName="cantidad"
+       [ngClass] = "{
+        'is-invalid':isValidField('cantidad')
+      }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="detalleVentaForm.get('cantidad').errors?.required">
+          Lo siento, cantidad es vacío. ¿Prueba otro?
+        </span>
+        <span *ngIf="detalleVentaForm.get('cantidad').errors?.pattern">
+          Debe ingresar caracteres Numericos
+         </span>
+        </div>
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="number" class="form-control" placeholder="Precio $" formControlName="precio">
+
+    <div class="form-group has-danger">
+      <label class="form-label "  for="inputInvalid">Cantidad</label>
+      <input type="text"  class="form-control"
+      placeholder="Precio $" id="validacion" formControlName="precio"
+       [ngClass] = "{
+        'is-invalid':isValidField('precio')
+      }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="detalleVentaForm.get('precio').errors?.required">
+          Lo siento, precio es vacío. ¿Prueba otro?
+        </span>
+        <span *ngIf="detalleVentaForm.get('precio').errors?.pattern">
+          Debe ingresar caracteres Numericos
+         </span>
+        </div>
     </div>
     <div class="form-group col-md-6">
       <input type="number" class="form-control" placeholder="Descuento" formControlName="descuento">
     </div>
+    <div class="form-group has-danger">
+      <label class="form-label "  for="inputInvalid">Descuento</label>
+      <input type="text"  class="form-control"
+      placeholder="Descuento" id="validacion" formControlName="descuento"
+       [ngClass] = "{
+        'is-invalid':isValidField('descuento')
+      }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="detalleVentaForm.get('descuento').errors?.required">
+          Lo siento, descuento es vacío. ¿Prueba otro?
+        </span>
+        <span *ngIf="detalleVentaForm.get('descuento').errors?.pattern">
+          Debe ingresar caracteres Numericos
+         </span>
+        </div>
+    </div>
   </div>
 
   <div *ngIf="this.bandera==1">
-  <button  type="submit" id="save"  class="btn btn-success btn-block text-light">Guardar</button>
+    <div  class="float-left col-md-6" >
+    <button  type="submit" id="save"  class="btn btn-outline-success">Guardar</button>
+    <button  type="submit"   class="btn btn-outline-info" (click)="onReset()">Reiniciar Formulario</button>
+  </div>
+
 </div>
 <div  *ngIf="this.bandera==0">
-  <button type="submit" id="modify" class="btn btn-success btn-block text-light">Modificar</button>
+  <button type="submit" id="modify" class="btn btn-success btn-block text-light" [disable]="detalleVentaForm.invalid">Modificar</button>
 </div>
 </form>
 <button class="btn btn-primary btn-sm m-1" (click)= "tolistarDetalleVenta()">Volver a la lista</button>

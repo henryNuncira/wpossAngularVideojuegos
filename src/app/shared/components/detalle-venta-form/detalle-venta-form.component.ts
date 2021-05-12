@@ -111,14 +111,20 @@ if( this.bandera==1){
       this.detalleVentaForm = this.fb.group({
         idDetalle: ['',[Validators.required]],
 
-        tipoVenta:['',[Validators.required]],
-        cantidad:['',[Validators.required]],
-        precio:['',[Validators.required]],
-        descuento:['',[Validators.required]],
+        tipoVenta:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
+        cantidad:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
+        precio:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
+        descuento:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
 
       });
     }
-
+    onReset():void{
+      this.detalleVentaForm.reset();
+    }
+    isValidField(campo:string): boolean{
+      const fieldName = this.detalleVentaForm.get(campo);
+      return fieldName.invalid && fieldName.touched;
+    }
   }
 
 

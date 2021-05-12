@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/services/service.service';
 import Swal from 'sweetalert2';
@@ -14,7 +14,7 @@ import { clientesI } from '../models/cliente.interface';
 export class ClienteFormComponent implements OnInit {
 
   bandera : number =0;
-
+  name = new FormControl();
   cliente:clientesI;
   estado : number;
   message : string;
@@ -33,7 +33,7 @@ export class ClienteFormComponent implements OnInit {
 
           if(typeof this.cliente == 'undefined'){//sino existe el proveedor crea uno nuevo
             this.bandera = 1;
-            this.router.navigate(['nuevoCliente']);
+            this.router.navigate(['nuevoClientes']);
           }else{
             this.clienteForm.patchValue(this.cliente);
 
@@ -44,6 +44,7 @@ export class ClienteFormComponent implements OnInit {
     toGuardar() : void{
 
   if( this.bandera==1){
+    debugger;
         this.api.PostNewCliente(this.clienteForm.value).subscribe(
           respuesta =>{
 
@@ -102,22 +103,27 @@ toChange(): void{
       this.router.navigate(['listadoClientes']);
     }
 
-
+    onReset():void{
+      this.clienteForm.reset();
+    }
     private initForm(): void {
       this.clienteForm = this.fb.group({
-        idCliente: ['',[Validators.required]],
+        idCliente: [''],
         nombre:['',[Validators.required]],
-        apellido:['',[Validators.required]],
+        apellidos:['',[Validators.required]],
         direccion:['',[Validators.required]],
-        cedula:['',[Validators.required]],
+        nit:['',[Validators.required]],
         correo:['',[Validators.required, Validators.pattern(this.isEmail)]],
-        edad:['',[Validators.required]],
-        telefono:['',[Validators.required]],
-
-
+        edad:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
+        telefono:['',[Validators.required, Validators.minLength(10)]],
 
       });
     }
 
+
+    isValidField(campo:string): boolean{
+      const fieldName = this.clienteForm.get(campo);
+      return fieldName.invalid && fieldName.touched;
+    }
   }
 

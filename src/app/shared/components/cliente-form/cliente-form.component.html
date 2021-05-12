@@ -1,44 +1,148 @@
-<form class="mt-3 col-md-8 offset-md-2"  (ngSubmit)= "toGuardar()" [formGroup]="clienteForm" >
+<h1>Modificar los Clientes</h1>
+<form  class="mt-3 col-md-8 offset-md-2 needs-validation"  (ngSubmit)= "toGuardar()" [formGroup]="clienteForm" >
 
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" id="readOnlyInput" placeholder="Solo lectura Id" readonly="" formControlName="idCliente">
+    <div *ngIf="this.bandera==0" class="form-group">
+      <fieldset>
+        <label class="form-label mt" for="readOnlyInput">Entrada de solo lectura</label>
+        <input class="form-control" id="readOnlyInput" type="text" placeholder="Readonly input here..."
+        readonly=""formControlName="idCliente" >
+      </fieldset>
     </div>
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+    <div class="form-group has-danger">
+      <label class="form-label "  for="inputInvalid">Nombres</label>
+      <input type="text"  class="form-control"
+       placeholder="Nombre" id="validacion" formControlName="nombre"
+       [ngClass] = "{
+        'is-invalid':isValidField('nombre')
+      }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="clienteForm.get('nombre').errors?.required">
+          Lo siento, ese nombre de usuario es vacío. ¿Prueba otro?
+        </span>
+        </div>
     </div>
+
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" placeholder="Apellidos" formControlName="apellidos">
-    </div>
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" placeholder="Dirección" formControlName="direccion">
-    </div>
+    <div class="form-group has-danger">
+      <label class="form-label"  for="inputInvalid">Apellidos</label>
+      <input type="text"  class="form-control"
+       placeholder="Apellidos" id="validacion" formControlName="apellidos"
+       [ngClass] = "{
+        'is-invalid':isValidField('apellidos')
+                  }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="clienteForm.get('apellidos').errors?.required">
+          Lo siento, el apellido del usuario es vacío. ¿Prueba otro?
+        </span>
+        </div>
+  </div>
+  <div class="form-group has-danger">
+    <label class="form-label"  for="inputInvalid">Dirección</label>
+    <input type="text"  class="form-control"
+     placeholder="Dirección" id="validacion" formControlName="direccion"
+     [ngClass] = "{
+      'is-invalid':isValidField('direccion')
+                }"
+      >
+     <div class="invalid-feedback">
+
+      <span *ngIf="clienteForm.get('direccion').errors?.required">
+        Lo siento, la dirección de usuario esta vacío. ¿Prueba otro?
+      </span>
+      </div>
+</div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" placeholder="Cedula/Nit" formControlName="nit">
-    </div>
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" placeholder="Correo Electronico" formControlName="correo">
-    </div>
+    <div class="form-group has-danger">
+      <label class="form-label"  for="inputInvalid">Nit</label>
+      <input type="text"  class="form-control"
+       placeholder="Nit" id="validacion" formControlName="nit"
+       [ngClass] = "{
+        'is-invalid':isValidField('nit')
+                  }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="clienteForm.get('nit').errors?.required">
+          Lo siento, el numero de nit no se permite vacío. ¿Prueba otro?
+        </span>
+        </div>
+  </div>
+  <div class="form-group has-danger">
+    <label class="form-label"  for="inputInvalid">Correo Electronico</label>
+    <input type="email"  class="form-control"
+     placeholder="Correo Electronico" id="validacion" formControlName="correo"
+     [ngClass] = "{
+      'is-invalid':isValidField('correo')
+                }"
+      >
+     <div class="invalid-feedback">
+
+      <span *ngIf="clienteForm.get('correo').errors?.required">
+        Lo siento, no puede ser vacío. ¿Prueba otro?
+      </span>
+      <span *ngIf="clienteForm.get('correo').errors?.pattern">
+        su formato de correo debe ser EJ: usuario@correo.com
+      </span>
+      </div>
+</div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" placeholder="Edad" formControlName="edad">
-    </div>
-    <div class="form-group col-md-6">
-      <input type="tel" class="form-control" placeholder="Telefono" formControlName="telefono">
-    </div>
+    <div class="form-group has-danger">
+      <label class="form-label"  for="inputInvalid">Edad</label>
+      <input type="text"  class="form-control"
+       placeholder="Edad" id="validacion" formControlName="edad"
+       [ngClass] = "{
+        'is-invalid':isValidField('edad')
+                  }"
+        >
+       <div class="invalid-feedback">
+
+        <span *ngIf="clienteForm.get('edad').errors?.required">
+          Lo siento, debe ingresar una edad. ¿Prueba de nuevo?
+        </span>
+        <span *ngIf="clienteForm.get('edad').errors?.pattern">
+         Debe ingresar caracteres Numericos
+        </span>
+        </div>
   </div>
+  <div class="form-group has-danger">
+    <label class="form-label"  for="inputInvalid">Telefono</label>
+    <input type="text"  class="form-control"
+     placeholder="Telefono" id="validacion" formControlName="telefono"
+     [ngClass] = "{
+      'is-invalid':isValidField('telefono')
+                }"
+      >
+     <div class="invalid-feedback">
+
+      <span *ngIf="clienteForm.get('telefono').errors?.required">
+        Lo siento, no se perimte campo vacío. ¿Prueba de nuevo?
+      </span>
+      <span *ngIf="clienteForm.get('telefono').errors?.minlength">
+        el numero debe tener un minimo {{clienteForm.get('telefono').errors?.minlength?.requiredLength}}
+        caracteres, si es un telefono fijo recuerda añadir el indicativo
+      </span>
+      </div>
+</div>
+  </div>
+  <br>
   <div *ngIf="this.bandera==1">
-  <button  type="submit" id="save"  class="btn btn-success btn-block text-light">Guardar</button>
+      <div  class="float-left col-md-6" >
+      <button  type="submit" id="save"  class="btn btn-outline-success">Guardar</button>
+      <button  type="submit"   class="btn btn-outline-info" (click)="onReset()">Reiniciar Formulario</button>
+    </div>
+
 </div>
-<div  *ngIf="this.bandera==0">
-  <button type="submit" id="modify" class="btn btn-success btn-block text-light">Modificar</button>
+<div *ngIf="this.bandera==0">
+  <button  type="submit" id="modify"  class="btn btn-success btn-block text-light" >modificar</button>
 </div>
+
 </form>
 <button class="btn btn-primary btn-sm m-1" (click)= "toList()">Volver a la lista</button>
-
-
